@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar España — Benigànim, Valencia</title>
+  <meta name="description" content="Restaurante Bar España en Plaça Major, 9, Benigànim. Cocina española de mercado, tapas, paellas y menú del día desde 15€. Reservas: +34 643 59 78 98.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --dark:      #111111;
+      --dark2:     #1a1a1a;
+      --dark3:     #252525;
+      --red:       #C8272D;
+      --red-h:     #e03037;
+      --gold:      #E8A838;
+      --gold-h:    #d4942f;
+      --cream:     #FAF6F0;
+      --cream2:    #F2EDE5;
+      --cream3:    #E8E0D5;
+      --text:      #1a1a1a;
+      --text-m:    #666;
+      --text-l:    #f0ece4;
+      --white:     #ffffff;
+      --nav-h:     72px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed; top:0; left:0; right:0;
+      z-index: 9999;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(17,17,17,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-h) !important; transform: translateY(-1px); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ========== LOGO NAV ========== */
+    .nav-logo-img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(232,168,56,0.7);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: block;
+    }
+    .nav-logo-img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 20px rgba(232,168,56,0.5);
+    }
+
+    /* ========== HERO LOGO ========== */
+    .hero-logo-wrap {
+      margin-bottom: 30px;
+    }
+    .hero-logo {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(232,168,56,0.75);
+      box-shadow:
+        0 0 0 6px rgba(232,168,56,0.15),
+        0 16px 48px rgba(0,0,0,0.55);
+      animation: logoIn 1.1s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+    }
+    @keyframes logoIn {
+      from { opacity:0; transform: scale(0.72) translateY(20px); }
+      to   { opacity:1; transform: scale(1) translateY(0); }
+    }
+
+    /* ========== HERO ========== */
+    #inicio {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('FOTO FUERA.PNG');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      animation: hzoom 14s ease-out forwards;
+    }
+    @keyframes hzoom { to { transform: scale(1); } }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        170deg,
+        rgba(10,10,10,0.25) 0%,
+        rgba(10,10,10,0.6) 55%,
+        rgba(10,10,10,0.88) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 860px;
+      padding: 0 24px;
+      animation: hfade 1.2s ease-out 0.4s both;
+    }
+    @keyframes hfade {
+      from { opacity:0; transform: translateY(32px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(232,168,56,0.5);
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before,
+    .hero-badge::after { content: '✦'; font-size: 8px; }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(72px, 12vw, 136px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.05em;
+      margin-bottom: 44px;
+      line-height: 1.6;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 34px;
+      border-radius: 5px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s;
+      letter-spacing: 0.05em;
+    }
+    .btn-red  { background: var(--red); color: #fff; }
+    .btn-red:hover  { background: var(--red-h); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,39,45,0.45); }
+    .btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .btn-gold  { background: var(--gold); color: var(--dark); }
+    .btn-gold:hover  { background: var(--gold-h); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,168,56,0.45); }
+    .btn-dark  { background: var(--dark); color: #fff; }
+    .btn-dark:hover  { background: #2a2a2a; transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.4);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-bar {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: spulse 2.2s ease-in-out infinite;
+    }
+    @keyframes spulse { 0%,100% { opacity:0.4; } 50% { opacity:1; } }
+
+    /* ========== COMMON ========== */
+    section { padding: 100px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 44px; }
+
+    .lbl {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+    .lbl-gold { color: var(--gold); }
+
+    .ttl {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+    .ttl em { font-style: italic; color: var(--red); }
+    .ttl-light { color: var(--text-l); }
+    .ttl-light em { color: var(--gold); }
+
+    .desc {
+      font-size: 16.5px;
+      font-weight: 300;
+      color: var(--text-m);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    /* ========== NOSOTROS ========== */
+    #nosotros { background: var(--dark); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img {
+      width: 100%; height: 540px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+    .about-ribbon {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 130px; height: 130px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Fraunces', serif;
+      box-shadow: 0 8px 32px rgba(232,168,56,0.45);
+    }
+    .about-ribbon .n { font-size: 40px; font-weight: 800; color: var(--dark); line-height: 1; }
+    .about-ribbon .s { font-size: 11px; font-weight: 700; color: var(--dark); letter-spacing: 0.04em; }
+
+    .about-text .desc { color: rgba(240,236,228,0.65); max-width: 100%; margin-bottom: 24px; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-n {
+      font-family: 'Fraunces', serif;
+      font-size: 42px; font-weight: 800;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-l { font-size: 12.5px; color: rgba(240,236,228,0.5); letter-spacing: 0.05em; }
+
+    /* ========== CARTA ========== */
+    #carta { background: var(--cream); }
+
+    .menu-hd { text-align: center; margin-bottom: 52px; }
+    .menu-hd .desc { margin: 0 auto; text-align: center; }
+
+    .tabs-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 52px;
+    }
+    .tabs {
+      display: flex;
+      background: white;
+      border: 1px solid var(--cream3);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .tab-btn {
+      padding: 13px 26px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--cream3);
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #777;
+      letter-spacing: 0.05em;
+      transition: all 0.22s;
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active { background: var(--dark); color: #fff; font-weight: 600; }
+    .tab-btn:hover:not(.active) { background: var(--cream2); color: var(--dark); }
+
+    .tab-pane { display: none; }
+    .tab-pane.on {
+      display: block;
+      animation: tfade 0.32s ease both;
+    }
+    @keyframes tfade {
+      from { opacity:0; transform: translateY(8px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1px;
+      background: var(--cream3);
+      border: 1px solid var(--cream3);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .dish {
+      background: white;
+      padding: 26px 30px;
+      transition: background 0.18s;
+    }
+    .dish:hover { background: #fefcf8; }
+    .dish-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .dish-name {
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--dark); flex: 1;
+      line-height: 1.2;
+    }
+    .dish-price {
+      font-size: 16.5px; font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+    }
+    .dish-desc {
+      font-size: 13px; color: #777;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .tag {
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: #f0ece4;
+      color: #888;
+    }
+    .tag.g  { background:#fff3e0; color:#e65100; }
+    .tag.l  { background:#e3f2fd; color:#1565c0; }
+    .tag.h  { background:#fce4ec; color:#c62828; }
+    .tag.p  { background:#e8f5e9; color:#2e7d32; }
+    .tag.s  { background:#f3e5f5; color:#6a1b9a; }
+    .tag.m  { background:#fff8e1; color:#f57f17; }
+    .tag.c  { background:#e0f2f1; color:#00695c; }
+
+    /* ========== MENÚ DEL DÍA ========== */
+    .mdia { background: var(--dark2); padding: 80px 0; }
+
+    .mdia-card {
+      background: var(--dark3);
+      border: 1px solid rgba(232,168,56,0.25);
+      border-radius: 14px;
+      padding: 60px 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mdia-card::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,168,56,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mdia-includes {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .mdia-includes li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 15px; color: rgba(240,236,228,0.75);
+    }
+    .mdia-includes li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .mdia-price { text-align: center; position: relative; z-index:1; }
+    .mdia-price .big {
+      font-family: 'Fraunces', serif;
+      display: block;
+      font-size: 90px; font-weight: 800;
+      color: var(--gold); line-height: 1;
+    }
+    .mdia-price .suf { font-size: 18px; color: rgba(255,255,255,0.45); }
+    .mdia-price .days {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ========== RESERVAS ========== */
+    #reservas { background: var(--cream2); }
+
+    .res-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .res-info .desc { color: #555; margin-bottom: 40px; max-width: 100%; }
+
+    .info-blk { margin-bottom: 36px; }
+    .info-blk h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 19px; font-weight: 600;
+      color: var(--dark); margin-bottom: 14px;
+    }
+
+    .htable { width: 100%; border-collapse: collapse; }
+    .htable tr { border-bottom: 1px solid #ddd; }
+    .htable td { padding: 10px 0; font-size: 14px; }
+    .htable td:first-child { color: #444; font-weight: 500; }
+    .htable td:last-child { color: var(--red); font-weight: 700; text-align: right; }
+
+    .citem {
+      display: flex; align-items: center;
+      gap: 12px; margin-bottom: 12px;
+      font-size: 15px; color: #444;
+    }
+    .cicon {
+      width: 38px; height: 38px;
+      background: var(--dark);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+
+    /* ========== FORM MULTISTEP ========== */
+    .rform {
+      background: white;
+      border-radius: 16px;
+      padding: 44px 48px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.09);
+    }
+
+    /* Progress steps */
+    .wiz-steps {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 0;
+    }
+    .wiz-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      position: relative;
+    }
+    .wiz-step::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: #e8e0d5;
+      z-index: 0;
+      transition: background 0.35s;
+    }
+    .wiz-step:last-child::after { display: none; }
+    .wiz-step.done::after { background: var(--red); }
+
+    .wiz-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #f0ece4;
+      color: #aaa;
+      font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      border: 2px solid #e8e0d5;
+    }
+    .wiz-step.active .wiz-dot {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+      box-shadow: 0 4px 14px rgba(17,17,17,0.25);
+    }
+    .wiz-step.done .wiz-dot {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+    }
+    .wiz-lbl {
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #bbb;
+      transition: color 0.3s;
+    }
+    .wiz-step.active .wiz-lbl { color: var(--dark); }
+    .wiz-step.done  .wiz-lbl { color: var(--red); }
+
+    /* Panels */
+    .wiz-panel { display: none; animation: wfade 0.32s ease both; }
+    .wiz-panel.on { display: block; }
+    @keyframes wfade {
+      from { opacity:0; transform: translateX(18px); }
+      to   { opacity:1; transform: translateX(0); }
+    }
+
+    .wiz-ttl {
+      font-family: 'Fraunces', serif;
+      font-size: 26px; font-weight: 800;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .wiz-sub { font-size: 13.5px; color: #999; margin-bottom: 28px; }
+
+    /* Inputs base */
+    .wiz-input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid #e0dbd4;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--dark);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      margin-bottom: 14px;
+    }
+    .wiz-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,39,45,0.1);
+    }
+    .wiz-label {
+      display: block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #666; margin-bottom: 8px;
+    }
+    .wiz-fg { margin-bottom: 4px; }
+
+    /* Hora — botones */
+    .hour-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .hour-btn {
+      padding: 11px 6px;
+      border: 2px solid #e8e0d5;
+      border-radius: 9px;
+      background: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .hour-btn:hover { border-color: var(--dark); color: var(--dark); }
+    .hour-btn.sel  {
+      background: var(--dark); color: white;
+      border-color: var(--dark);
+      box-shadow: 0 4px 12px rgba(17,17,17,0.2);
+    }
+
+    /* Personas — contador */
+    .pax-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 32px 0 24px;
+    }
+    .pax-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid #e0dbd4;
+      background: white;
+      font-size: 24px;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .pax-btn:hover:not(:disabled) { border-color: var(--dark); background: var(--dark); color: white; }
+    .pax-btn:disabled { opacity: 0.25; cursor: default; }
+    .pax-num {
+      font-family: 'Fraunces', serif;
+      font-size: 72px; font-weight: 800;
+      color: var(--dark); line-height: 1;
+      min-width: 80px; text-align: center;
+    }
+    .pax-lbl {
+      font-size: 13px; color: #999;
+      letter-spacing: 0.06em; text-align: center;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .pax-note {
+      text-align: center;
+      font-size: 12.5px; color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    /* Botones nav */
+    .wiz-nav {
+      display: flex; gap: 12px; margin-top: 28px;
+    }
+    .wiz-back {
+      padding: 14px 24px;
+      border: 2px solid #e0dbd4;
+      border-radius: 9px;
+      background: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: #666; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .wiz-back:hover { border-color: var(--dark); color: var(--dark); }
+    .wiz-next {
+      flex: 1;
+      padding: 15px;
+      background: var(--dark);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.05em;
+      border: none; border-radius: 9px;
+      cursor: pointer;
+      transition: background 0.22s, transform 0.22s;
+    }
+    .wiz-next:hover { background: var(--red); transform: translateY(-2px); }
+
+    /* Resumen */
+    .wiz-summary {
+      background: #faf6f0;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .sum-item {}
+    .sum-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 3px; }
+    .sum-val { font-size: 15px; font-weight: 700; color: var(--dark); }
+
+    /* Éxito */
+    .wiz-success {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .wiz-success .ck { font-size: 60px; margin-bottom: 18px; }
+    .wiz-success h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 28px; color: var(--dark); margin-bottom: 10px;
+    }
+    .wiz-success p { color: #666; font-size: 15px; line-height: 1.6; }
+
+    @media (max-width: 600px) {
+      .rform { padding: 28px 20px; }
+      .hour-grid { grid-template-columns: repeat(3,1fr); }
+      .wiz-summary { grid-template-columns: 1fr; }
+    }
+
+    /* ========== GALERÍA ========== */
+    #galeria { background: var(--dark); }
+    .gal-hd { text-align: center; margin-bottom: 52px; }
+
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+    }
+    .gi { overflow: hidden; border-radius: 6px; position: relative; cursor: pointer; }
+    .gi.wide { grid-column: span 2; }
+    .gi img {
+      width: 100%; height: 270px;
+      object-fit: cover; display: block;
+      transition: transform 0.55s ease;
+    }
+    .gi.wide img { height: 360px; }
+    .gi:hover img { transform: scale(1.06); }
+    .gi-ov {
+      position: absolute; inset: 0;
+      background: rgba(200,39,45,0);
+      transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gi:hover .gi-ov { background: rgba(200,39,45,0.28); }
+
+    /* ========== EVENTOS ========== */
+    #eventos { background: var(--cream); }
+    .ev-hd { text-align: center; margin-bottom: 52px; }
+    .ev-hd .desc { margin: 0 auto; }
+
+    .ev-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+    .ecard {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .ecard:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(0,0,0,0.12); }
+    .ecard-ico {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .ecard-ico img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+    .ecard:hover .ecard-ico img { transform: scale(1.07); }
+    .ecard-body { padding: 24px 28px 30px; }
+    .ecard-body h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .ecard-body p { font-size: 13.5px; color: #666; line-height: 1.65; margin-bottom: 16px; }
+    .elink {
+      font-size: 12.5px; font-weight: 700;
+      color: var(--red); text-decoration: none;
+      letter-spacing: 0.05em;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.2s;
+    }
+    .elink:hover { gap: 10px; }
+
+    /* ========== CONTACTO ========== */
+    #contacto { background: var(--cream2); }
+
+    .ct-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      height: 420px;
+    }
+    .map-wrap iframe { width:100%; height:100%; border:none; display:block; }
+
+    .ct-details { padding-top: 4px; }
+
+    .ditem {
+      display: flex; gap: 18px;
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid #ddd;
+    }
+    .ditem:last-of-type { border-bottom: none; margin-bottom: 28px; }
+    .dico {
+      width: 50px; height: 50px;
+      background: var(--dark);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 21px; flex-shrink: 0;
+    }
+    .dico.r { background: var(--red); }
+    .dico.g { background: var(--gold); }
+    .dico.w { background: #25D366; }
+
+    .dtxt h4 {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 4px;
+    }
+    .dtxt p, .dtxt a {
+      font-size: 15.5px; color: var(--dark);
+      text-decoration: none; font-weight: 500;
+      line-height: 1.5;
+    }
+    .dtxt a:hover { color: var(--red); }
+
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: white;
+      padding: 14px 28px; border-radius: 7px;
+      font-weight: 700; font-size: 15px;
+      text-decoration: none;
+      transition: background 0.22s, transform 0.22s;
+    }
+    .wa-btn:hover {
+      background: #20c45a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #090909;
+      color: rgba(255,255,255,0.5);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
+    }
+    .fbrand .nav-logo { display: inline-block; margin-bottom: 16px; font-size: 26px; }
+    .fbrand p {
+      font-size: 13.5px; line-height: 1.75;
+      color: rgba(255,255,255,0.38);
+      max-width: 260px;
+    }
+    .f-social { display: flex; gap: 8px; margin-top: 22px; }
+    .fsoc {
+      width: 36px; height: 36px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .fsoc:hover { background: var(--red); }
+
+    .fcol h4 {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 20px;
+    }
+    .fcol ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .fcol ul a {
+      font-size: 13.5px; color: rgba(255,255,255,0.45);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .fcol ul a:hover { color: white; }
+
+    .fbot {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12.5px; color: rgba(255,255,255,0.3);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed;
+        top: var(--nav-h); left:0; right:0;
+        background: rgba(17,17,17,0.98);
+        backdrop-filter: blur(12px);
+        padding: 24px 32px; gap: 20px;
+        z-index: 9998;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-toggle { display: flex; }
+      nav { padding: 0 24px; }
+
+      .about-grid,
+      .res-grid,
+      .ct-grid { grid-template-columns: 1fr; gap: 44px; }
+
+      .about-ribbon { width:100px; height:100px; }
+      .about-ribbon .n { font-size: 30px; }
+      .about-img-wrap img { height: 320px; }
+
+      .gal-grid { grid-template-columns: 1fr 1fr; }
+      .gi.wide { grid-column: span 2; }
+      .ev-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .tabs { flex-wrap: wrap; }
+      .tab-btn { flex: 1; min-width: 80px; }
+      .mdia-card { grid-template-columns: 1fr; text-align: center; gap: 36px; padding: 44px 36px; }
+      .frow { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      section { padding: 64px 0; }
+      .ev-grid { grid-template-columns: 1fr; }
+      .gal-grid { grid-template-columns: 1fr; }
+      .gi.wide { grid-column: span 1; }
+      .gi img, .gi.wide img { height: 220px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .rform { padding: 28px 20px; }
+      .fbot { flex-direction: column; gap: 10px; text-align: center; }
+    }
+
+    /* ========== PROGRESS BAR ========== */
+    #pbar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      z-index: 999999;
+      pointer-events: none;
+      transition: width 0.08s linear;
+    }
+
+    /* ========== SCROLL REVEAL ========== */
+    [data-rv] {
+      opacity: 0;
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    [data-rv="left"]  { transform: translateX(-56px); }
+    [data-rv="right"] { transform: translateX(56px); }
+    [data-rv="up"]    { transform: translateY(44px); }
+    [data-rv].rv-in   { opacity: 1; transform: none !important; }
+  </style>
+</head>
+<body>
+<div id="pbar"></div>
+
+<!-- ============================== NAV ============================== -->
+<nav id="mnav">
+  <a href="#inicio" class="nav-logo">
+    <img src="LOGO.PNG" alt="Bar España" class="nav-logo-img">
+  </a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#reservas" class="nav-cta">Reservar</a></li>
+  </ul>
+  <div class="nav-toggle" id="ntgl" onclick="navToggle()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============================== HERO ============================== -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <img src="LOGO.PNG" alt="Logo Bar España" class="hero-logo">
+    </div>
+    <span class="hero-badge">Benigànim · Plaça Major · Valencia</span>
+    <h1>Bar <em>España</em></h1>
+    <p class="hero-sub">Cocina española de mercado · Tapas · Paellas · Menú del día<br>En el corazón de Benigànim desde siempre</p>
+    <div class="hero-btns">
+      <a href="#carta" class="btn btn-red">Ver la Carta →</a>
+      <a href="#reservas" class="btn btn-ghost">Reservar Mesa</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ============================== NOSOTROS ============================== -->
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img
+          src="FOTO DENTRO.PNG"
+          alt="Interior del Bar España"
+          loading="lazy"
+        >
+        <div class="about-ribbon">
+          <span class="n">4.1</span>
+          <span class="s">★ Google</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="lbl lbl-gold">Sobre Nosotros</p>
+        <h2 class="ttl ttl-light">Un rincón de sabor en la <em>Plaça Major</em></h2>
+        <p class="desc">El Bar España lleva generaciones siendo el punto de encuentro de Benigànim. Situado en el corazón de la Plaça Major, somos mucho más que un restaurante: somos parte del tejido vivo de este pueblo, un lugar donde la gente se reúne a compartir, a reír y a disfrutar de una cocina honesta.</p>
+        <p class="desc" style="margin-top:16px;">Nuestros platos nacen del respeto por el producto de temporada y las recetas tradicionales valencianas, con el cariño de siempre y ese toque casero que tanto se agradece. Desde los entrantes elaborados hasta la paella del domingo, todo está hecho con las manos y el corazón.</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-n">74+</div>
+            <div class="stat-l">Reseñas Google</div>
+          </div>
+          <div>
+            <div class="stat-n">15€</div>
+            <div class="stat-l">Menú del día</div>
+          </div>
+          <div>
+            <div class="stat-n">7 días</div>
+            <div class="stat-l">Abiertos siempre</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CARTA ============================== -->
+<section id="carta">
+  <div class="container">
+    <div class="menu-hd">
+      <p class="lbl">Lo que cocinamos</p>
+      <h2 class="ttl">Nuestra <em>Carta</em></h2>
+      <p class="desc">Cocina española de mercado, platos elaborados y tapas con producto de temporada. Carta orientativa — pregúntanos por las especialidades del día.</p>
+    </div>
+
+    <div class="tabs-wrap">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('ent',this)">Entrantes</button>
+        <button class="tab-btn" onclick="showTab('pri',this)">Principales</button>
+        <button class="tab-btn" onclick="showTab('pos',this)">Postres</button>
+        <button class="tab-btn" onclick="showTab('beb',this)">Bebidas</button>
+      </div>
+    </div>
+
+    <!-- Entrantes -->
+    <div id="ent" class="tab-pane on">
+      <div class="items-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Pan con tomate y jamón</span>
+            <span class="dish-price">4,50 €</span>
+          </div>
+          <p class="dish-desc">Rebanadas de pan artesano tostado con tomate de temporada, aceite de oliva virgen extra y jamón ibérico cortado a cuchillo.</p>
+          <div class="tags"><span class="tag g">Gluten</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Croquetas caseras de jamón</span>
+            <span class="dish-price">4,00 €</span>
+          </div>
+          <p class="dish-desc">Croquetas cremosas de jamón ibérico elaboradas artesanalmente cada día. Ración de 4 unidades, crujientes por fuera y melosas por dentro.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Ensaladilla rusa</span>
+            <span class="dish-price">4,50 €</span>
+          </div>
+          <p class="dish-desc">Ensaladilla casera con patata, zanahoria, guisantes, atún y mayonesa. Presentación generosa y tradicional.</p>
+          <div class="tags"><span class="tag h">Huevo</span><span class="tag p">Pescado</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Fingers de mozzarella</span>
+            <span class="dish-price">5,50 €</span>
+          </div>
+          <p class="dish-desc">Tiras de mozzarella rebozada extra crujiente acompañadas de mermelada de tomate artesanal. Uno de nuestros platos más pedidos.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Patatas bravas caseras</span>
+            <span class="dish-price">4,00 €</span>
+          </div>
+          <p class="dish-desc">Patatas fritas en casa con salsa brava picante y alioli suave. El clásico de siempre, hecho como debe ser.</p>
+          <div class="tags"><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Gambas al ajillo</span>
+            <span class="dish-price">7,50 €</span>
+          </div>
+          <p class="dish-desc">Gambas salteadas en cazuela de barro con aceite de oliva, ajo, guindilla y perejil fresco. Para mojar pan sin parar.</p>
+          <div class="tags"><span class="tag c">Crustáceos</span><span class="tag s">Sulfitos</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Principales -->
+    <div id="pri" class="tab-pane">
+      <div class="items-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Paella valenciana</span>
+            <span class="dish-price">12,00 €/p.</span>
+          </div>
+          <p class="dish-desc">Paella tradicional con pollo, conejo, judías verdes, garrofó y azafrán. Elaborada al momento. Mínimo 2 personas — avísanos con antelación.</p>
+          <div class="tags"><span class="tag g">Gluten</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Hamburguesa de ternera</span>
+            <span class="dish-price">10,50 €</span>
+          </div>
+          <p class="dish-desc">Hamburguesa 180g de ternera con queso fundido, lechuga, tomate, cebolla caramelizada y salsa de la casa. Patatas fritas caseras incluidas.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Hamburguesa de pollo</span>
+            <span class="dish-price">9,50 €</span>
+          </div>
+          <p class="dish-desc">Pechuga de pollo empanada crujiente con salsa de yogur, lechuga, tomate y pepinillos. Con patatas fritas caseras.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Pollo a la brasa</span>
+            <span class="dish-price">9,50 €</span>
+          </div>
+          <p class="dish-desc">Medio pollo asado lentamente a la brasa, marinado con hierbas mediterráneas. Acompañado de patatas y verdura salteada.</p>
+          <div class="tags"></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Merluza a la plancha</span>
+            <span class="dish-price">11,00 €</span>
+          </div>
+          <p class="dish-desc">Lomo de merluza fresca a la plancha con refrito de ajo y perejil. Acompañada de verduras de temporada.</p>
+          <div class="tags"><span class="tag p">Pescado</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Entrecot de ternera</span>
+            <span class="dish-price">14,50 €</span>
+          </div>
+          <p class="dish-desc">Entrecot a la plancha con sal en escamas y pimienta negra. Guarnición de patatas y ensalada mixta. El favorito de los carnívoros.</p>
+          <div class="tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Postres -->
+    <div id="pos" class="tab-pane">
+      <div class="items-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Flan de café casero ⭐</span>
+            <span class="dish-price">3,50 €</span>
+          </div>
+          <p class="dish-desc">Nuestro postre estrella. Flan de vainilla con toque a café, elaborado cada día en casa. Acompañado de nata montada. ¡No te lo pierdas!</p>
+          <div class="tags"><span class="tag h">Huevo</span><span class="tag l">Lácteos</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Tarta de galleta con caramelo</span>
+            <span class="dish-price">3,50 €</span>
+          </div>
+          <p class="dish-desc">Tarta fría de galleta con base crujiente y cremoso relleno de caramelo tostado. Un clásico irresistible.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Carrot Cake</span>
+            <span class="dish-price">3,50 €</span>
+          </div>
+          <p class="dish-desc">Bizcocho de zanahoria con especias y frosting de queso crema. Suave, húmedo y con ese toque especiado tan característico.</p>
+          <div class="tags"><span class="tag g">Gluten</span><span class="tag l">Lácteos</span><span class="tag h">Huevo</span><span class="tag m">F. secos</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Helado artesano (2 bolas)</span>
+            <span class="dish-price">2,50 €</span>
+          </div>
+          <p class="dish-desc">Selección de helados artesanos de temporada. Pregunta al camarero por los sabores disponibles hoy.</p>
+          <div class="tags"><span class="tag l">Lácteos</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bebidas -->
+    <div id="beb" class="tab-pane">
+      <div class="items-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Café solo / Cortado</span>
+            <span class="dish-price">1,20 €</span>
+          </div>
+          <p class="dish-desc">Café de tueste natural o mezcla. Servido en taza caliente. También disponible como café americano.</p>
+          <div class="tags"></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Café con leche</span>
+            <span class="dish-price">1,50 €</span>
+          </div>
+          <p class="dish-desc">Café con leche entera bien cremoso. Disponible también con leche desnatada o de avena (consultar).</p>
+          <div class="tags"><span class="tag l">Lácteos</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Cerveza / Caña</span>
+            <span class="dish-price">1,80 €</span>
+          </div>
+          <p class="dish-desc">Caña fría de grifo. También disponible botellín y sin alcohol. Acompañada de su tapa de la casa.</p>
+          <div class="tags"><span class="tag g">Gluten</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Vino de la casa (copa)</span>
+            <span class="dish-price">2,00 €</span>
+          </div>
+          <p class="dish-desc">Vino tinto, blanco o rosado de la Comunitat Valenciana. Media botella o botella disponibles. Pregunta por la selección.</p>
+          <div class="tags"><span class="tag s">Sulfitos</span></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Refrescos</span>
+            <span class="dish-price">2,00 €</span>
+          </div>
+          <p class="dish-desc">Coca-Cola, Fanta naranja/limón, Aquarius, Nestea. Con o sin gas. Servidos bien fríos con hielo.</p>
+          <div class="tags"></div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Agua mineral</span>
+            <span class="dish-price">1,50 €</span>
+          </div>
+          <p class="dish-desc">Botella 50cl de agua mineral natural Fonter o con gas. Servida fría.</p>
+          <div class="tags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== MENÚ DEL DÍA ============================== -->
+<div class="mdia">
+  <div class="container">
+    <div class="mdia-card">
+      <div>
+        <p class="lbl lbl-gold">De lunes a viernes</p>
+        <h2 class="ttl ttl-light" style="font-size:clamp(34px,4vw,50px);">Menú del <em>Día</em></h2>
+        <p style="font-size:14px;color:rgba(240,236,228,0.45);margin-top:4px;letter-spacing:0.04em;">Varía cada día · Pregunta al camarero por la oferta</p>
+        <ul class="mdia-includes">
+          <li>4 entrantes a elegir (ensalada, croquetas, jamón, ensaladilla…)</li>
+          <li>Plato principal a elegir: carne o pescado del día</li>
+          <li>Postre casero o café incluido</li>
+          <li>Pan y bebida (agua, vino o refresco) incluidos</li>
+        </ul>
+        <a href="#reservas" class="btn btn-gold" style="margin-top:36px;">Reservar para el menú</a>
+      </div>
+      <div class="mdia-price">
+        <span class="big">15</span>
+        <span class="suf">€ / persona</span>
+        <p class="days">Lun – Vie · Mediodía</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== RESERVAS ============================== -->
+<section id="reservas">
+  <div class="container">
+    <div class="res-grid">
+      <!-- Info -->
+      <div class="res-info">
+        <p class="lbl">¿Quieres visitarnos?</p>
+        <h2 class="ttl">Reserva tu <em>Mesa</em></h2>
+        <p class="desc">Llámanos directamente o usa el formulario. Te confirmamos la reserva a la mayor brevedad. Para grupos o eventos, consúltanos sin compromiso.</p>
+
+        <div class="info-blk">
+          <h3>📅 Horarios de apertura</h3>
+          <table class="htable">
+            <tr><td>Lunes – Viernes</td><td>7:00 – 18:00</td></tr>
+            <tr><td>Sábado</td><td>6:00 – 12:00</td></tr>
+            <tr><td>Domingo</td><td>Abierto 24 horas</td></tr>
+          </table>
+        </div>
+
+        <div class="info-blk">
+          <h3>📞 Contacto directo</h3>
+          <div class="citem">
+            <div class="cicon">📞</div>
+            <div><a href="tel:+34643597898" style="text-decoration:none;color:inherit;font-weight:700;font-size:16px;">+34 643 59 78 98</a></div>
+          </div>
+          <div class="citem">
+            <div class="cicon">📍</div>
+            <div>Plaça Major, 9 · 46830 Benigànim, Valencia</div>
+          </div>
+          <div class="citem">
+            <div class="cicon">💬</div>
+            <div><a href="https://wa.me/34643597898" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;">Escribir por WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form multistep -->
+      <div class="rform" id="rformwrap">
+
+        <!-- Éxito -->
+        <div class="wiz-success" id="wiz-success">
+          <div class="ck">🎉</div>
+          <h3>¡Reserva enviada!</h3>
+          <p>Gracias, <strong id="wiz-sname"></strong>.<br>Te llamamos para confirmarlo en breve.</p>
+          <p style="margin-top:16px;font-size:13px;color:#bbb;">¿Necesitas algo urgente?<br><strong style="color:var(--dark);">+34 643 59 78 98</strong></p>
+        </div>
+
+        <!-- Pasos -->
+        <div id="wiz-body">
+          <!-- Indicador de pasos -->
+          <div class="wiz-steps">
+            <div class="wiz-step active" id="ws1">
+              <div class="wiz-dot">1</div>
+              <span class="wiz-lbl">Cuándo</span>
+            </div>
+            <div class="wiz-step" id="ws2">
+              <div class="wiz-dot">2</div>
+              <span class="wiz-lbl">Personas</span>
+            </div>
+            <div class="wiz-step" id="ws3">
+              <div class="wiz-dot">3</div>
+              <span class="wiz-lbl">Tus datos</span>
+            </div>
+          </div>
+
+          <!-- Paso 1: fecha + hora -->
+          <div class="wiz-panel on" id="wp1">
+            <div class="wiz-ttl">¿Cuándo venís?</div>
+            <p class="wiz-sub">Elige el día y la hora que mejor os venga.</p>
+            <div class="wiz-fg">
+              <label class="wiz-label">Fecha *</label>
+              <input type="date" id="wfd" class="wiz-input">
+            </div>
+            <label class="wiz-label">Hora *</label>
+            <div class="hour-grid">
+              <button class="hour-btn" onclick="selectHour(this,'13:00')">13:00</button>
+              <button class="hour-btn" onclick="selectHour(this,'13:30')">13:30</button>
+              <button class="hour-btn" onclick="selectHour(this,'14:00')">14:00</button>
+              <button class="hour-btn" onclick="selectHour(this,'14:30')">14:30</button>
+              <button class="hour-btn" onclick="selectHour(this,'15:00')">15:00</button>
+              <button class="hour-btn" onclick="selectHour(this,'15:30')">15:30</button>
+              <button class="hour-btn" onclick="selectHour(this,'20:00')">20:00</button>
+              <button class="hour-btn" onclick="selectHour(this,'20:30')">20:30</button>
+              <button class="hour-btn" onclick="selectHour(this,'21:00')">21:00</button>
+              <button class="hour-btn" onclick="selectHour(this,'21:30')">21:30</button>
+            </div>
+            <div class="wiz-nav">
+              <button class="wiz-next" onclick="wizNext(1)">Siguiente →</button>
+            </div>
+          </div>
+
+          <!-- Paso 2: personas -->
+          <div class="wiz-panel" id="wp2">
+            <div class="wiz-ttl">¿Cuántos seréis?</div>
+            <p class="wiz-sub">Reserva para grupos de hasta 10 personas.</p>
+            <div class="pax-wrap">
+              <button class="pax-btn" id="pax-minus" onclick="changePax(-1)">−</button>
+              <div>
+                <div class="pax-num" id="pax-num">2</div>
+                <div class="pax-lbl">personas</div>
+              </div>
+              <button class="pax-btn" id="pax-plus" onclick="changePax(1)">+</button>
+            </div>
+            <p class="pax-note">Más de 10 personas — llámanos directamente</p>
+            <div class="wiz-nav">
+              <button class="wiz-back" onclick="wizBack(2)">← Atrás</button>
+              <button class="wiz-next" onclick="wizNext(2)">Siguiente →</button>
+            </div>
+          </div>
+
+          <!-- Paso 3: datos -->
+          <div class="wiz-panel" id="wp3">
+            <div class="wiz-ttl">¿Quién reserva?</div>
+            <p class="wiz-sub">Solo necesitamos tu nombre y teléfono.</p>
+            <div class="wiz-summary" id="wiz-summary"></div>
+            <div class="wiz-fg">
+              <label class="wiz-label">Nombre y apellido *</label>
+              <input type="text" id="wfn" class="wiz-input" placeholder="Tu nombre completo">
+            </div>
+            <div class="wiz-fg">
+              <label class="wiz-label">Teléfono *</label>
+              <input type="tel" id="wft" class="wiz-input" placeholder="6XX XXX XXX">
+            </div>
+            <div class="wiz-nav">
+              <button class="wiz-back" onclick="wizBack(3)">← Atrás</button>
+              <button class="wiz-next" onclick="wizSubmit()">Confirmar reserva ✓</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== GALERÍA ============================== -->
+<section id="galeria">
+  <div class="container">
+    <div class="gal-hd">
+      <p class="lbl lbl-gold">Nuestro espacio</p>
+      <h2 class="ttl ttl-light">Galería de <em>Imágenes</em></h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gi wide">
+        <img src="FOTO FUERA.PNG" alt="Fachada del Bar España" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+      <div class="gi">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3df9?w=600&q=80" alt="Tapas y entrantes" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+      <div class="gi">
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80" alt="Paella valenciana" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+      <div class="gi">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Comida elaborada" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+      <div class="gi">
+        <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt="Terraza exterior" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+      <div class="gi wide">
+        <img src="FOTO DENTRO.PNG" alt="Interior del Bar España" loading="lazy">
+        <div class="gi-ov"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== EVENTOS ============================== -->
+<section id="eventos">
+  <div class="container">
+    <div class="ev-hd">
+      <p class="lbl">Celebra con nosotros</p>
+      <h2 class="ttl">Eventos y <em>Celebraciones</em></h2>
+      <p class="desc">Desde cumpleaños íntimos hasta grandes celebraciones familiares. Nos adaptamos a lo que necesitas y creamos un menú a tu medida.</p>
+    </div>
+    <div class="ev-grid">
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Celebración de cumpleaños" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Cumpleaños</h3>
+          <p>Celebra tu día especial. Menús personalizados, decoración y opción de tarta de cumpleaños. Lo organizamos todo.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80" alt="Celebración de comunión" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Comuniones</h3>
+          <p>Hacemos memorable el día de la comunión con menús especiales adaptados a toda la familia, niños incluidos.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Bodas y banquetes" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Bodas y Banquetes</h3>
+          <p>Menús de banquete, aperitivos y cenas de celebración. Presupuesto personalizado sin ningún compromiso.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Menú degustación" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Menú Degustación</h3>
+          <p>Un recorrido por los mejores platos de nuestra cocina. Disponible bajo reserva previa con al menos 48h de antelación.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Eventos de empresa" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Eventos de Empresa</h3>
+          <p>Comidas de equipo, cenas corporativas y reuniones de trabajo con catering. Espacio privado disponible.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="ecard-ico">
+          <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=600&q=80" alt="Navidades y fiestas" loading="lazy">
+        </div>
+        <div class="ecard-body">
+          <h3>Navidades y Fiestas</h3>
+          <p>Cenas de Navidad, fin de año y celebraciones de temporada. Menús festivos especiales con reserva anticipada.</p>
+          <a href="#reservas" class="elink">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CONTACTO ============================== -->
+<section id="contacto">
+  <div class="container">
+    <div class="ct-grid">
+      <div>
+        <p class="lbl">Encuéntranos</p>
+        <h2 class="ttl" style="margin-bottom:36px;">¿Cómo <em>llegar</em>?</h2>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.157268607606!2d-0.44421189999999994!3d38.9432354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd619778e9c59ac7%3A0x1f4e9171aadd89d!2sRestaurante%20Bar%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1751777295397!5m2!1ses!2ses"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="ct-details">
+        <p class="lbl" style="margin-top:8px;">Datos de contacto</p>
+
+        <div class="ditem">
+          <div class="dico">📍</div>
+          <div class="dtxt">
+            <h4>Dirección</h4>
+            <p>Plaça Major, 9<br>46830 Benigànim, Valencia</p>
+          </div>
+        </div>
+        <div class="ditem">
+          <div class="dico r">📞</div>
+          <div class="dtxt">
+            <h4>Teléfono</h4>
+            <a href="tel:+34643597898">+34 643 59 78 98</a>
+          </div>
+        </div>
+        <div class="ditem">
+          <div class="dico g">⏰</div>
+          <div class="dtxt">
+            <h4>Horario</h4>
+            <p>Lun–Vie: 7:00 – 18:00<br>Sábado: 6:00 – 12:00<br>Domingo: Abierto 24 horas</p>
+          </div>
+        </div>
+        <div class="ditem">
+          <div class="dico w">💬</div>
+          <div class="dtxt">
+            <h4>WhatsApp</h4>
+            <a href="https://wa.me/34643597898" target="_blank">Escríbenos directamente</a>
+          </div>
+        </div>
+
+        <a href="https://wa.me/34643597898" target="_blank" class="wa-btn">
+          💬 &nbsp;Contactar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fbrand">
+        <a href="#inicio" class="nav-logo">
+          <img src="LOGO.PNG" alt="Bar España" style="height:70px;width:70px;border-radius:50%;object-fit:cover;border:2px solid rgba(232,168,56,0.6);">
+        </a>
+        <p>Cocina española de mercado en el corazón de Benigànim. Plaça Major, 9 · 46830 Benigànim · Valencia. Abiertos todos los días.</p>
+        <div class="f-social">
+          <a href="#" class="fsoc" title="Instagram">📸</a>
+          <a href="#" class="fsoc" title="Facebook">👍</a>
+          <a href="#" class="fsoc" title="TripAdvisor">🦉</a>
+          <a href="https://wa.me/34643597898" class="fsoc" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>El Restaurante</h4>
+        <ul>
+          <li><a href="#nosotros">Sobre nosotros</a></li>
+          <li><a href="#carta">Nuestra carta</a></li>
+          <li><a href="#carta">Menú del día</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#reservas">Reservas de mesa</a></li>
+          <li><a href="#eventos">Cumpleaños</a></li>
+          <li><a href="#eventos">Comuniones</a></li>
+          <li><a href="#eventos">Eventos de empresa</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34643597898">+34 643 59 78 98</a></li>
+          <li><a href="#contacto">Plaça Major, 9</a></li>
+          <li><a href="#contacto">46830 Benigànim</a></li>
+          <li><a href="https://wa.me/34643597898" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2025 Bar España · Benigànim · Todos los derechos reservados</span>
+      <span>⭐ 4.1 en Google · 74 reseñas</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================== JS ============================== -->
+<script>
+  /* ── NAV + PROGRESS BAR + PARALLAX ── */
+  const mnav   = document.getElementById('mnav');
+  const pbar   = document.getElementById('pbar');
+  const heroBg = document.querySelector('.hero-bg');
+  const heroH  = document.getElementById('inicio');
+
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    const maxS = document.documentElement.scrollHeight - window.innerHeight;
+
+    // Barra de progreso
+    pbar.style.width = (s / maxS * 100) + '%';
+
+    // Nav fondo al scroll
+    mnav.classList.toggle('scrolled', s > 50);
+
+    // Parallax hero
+    if (heroBg && s < window.innerHeight) {
+      heroBg.style.animation = 'none';
+      heroBg.style.transform = `scale(1.04) translateY(${s * 0.28}px)`;
+    }
+  }, { passive: true });
+
+  /* ── MOBILE NAV ── */
+  function navToggle() {
+    document.getElementById('navlinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navlinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open'))
+  );
+
+  /* ── TABS ── */
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('on'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('on');
+    btn.classList.add('active');
+  }
+
+  /* ── FECHA MÍNIMA RESERVAS ── */
+  const wfd = document.getElementById('wfd');
+  if (wfd) {
+    const t = new Date();
+    t.setDate(t.getDate() + 1);
+    wfd.min = t.toISOString().split('T')[0];
+  }
+
+  /* ── WIZARD RESERVA ── */
+  let wizHour = '';
+  let wizPax  = 2;
+
+  function selectHour(btn, val) {
+    document.querySelectorAll('.hour-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    wizHour = val;
+  }
+
+  function changePax(delta) {
+    wizPax = Math.min(10, Math.max(1, wizPax + delta));
+    document.getElementById('pax-num').textContent = wizPax;
+    document.getElementById('pax-minus').disabled = wizPax <= 1;
+    document.getElementById('pax-plus').disabled  = wizPax >= 10;
+  }
+
+  function wizNext(step) {
+    if (step === 1) {
+      if (!document.getElementById('wfd').value) {
+        document.getElementById('wfd').focus();
+        document.getElementById('wfd').style.borderColor = 'var(--red)';
+        return;
+      }
+      if (!wizHour) {
+        document.querySelectorAll('.hour-btn')[0].style.animation = 'none';
+        alert('Elige una hora para continuar');
+        return;
+      }
+    }
+    setPanel(step, step + 1);
+  }
+
+  function wizBack(step) {
+    setPanel(step, step - 1);
+  }
+
+  function setPanel(from, to) {
+    document.getElementById('wp' + from).classList.remove('on');
+    document.getElementById('wp' + to).classList.add('on');
+
+    // Actualizar indicadores
+    for (let i = 1; i <= 3; i++) {
+      const ws = document.getElementById('ws' + i);
+      ws.classList.remove('active', 'done');
+      if (i < to)  ws.classList.add('done');
+      if (i === to) ws.classList.add('active');
+    }
+
+    // Rellenar resumen en paso 3
+    if (to === 3) {
+      const fecha = document.getElementById('wfd').value;
+      const [y,m,d] = fecha.split('-');
+      const fechaFmt = d + '/' + m + '/' + y;
+      document.getElementById('wiz-summary').innerHTML =
+        '<div class="sum-item"><div class="sum-lbl">Fecha</div><div class="sum-val">' + fechaFmt + '</div></div>' +
+        '<div class="sum-item"><div class="sum-lbl">Hora</div><div class="sum-val">' + wizHour + '</div></div>' +
+        '<div class="sum-item"><div class="sum-lbl">Personas</div><div class="sum-val">' + wizPax + (wizPax === 1 ? ' persona' : ' personas') + '</div></div>';
+    }
+  }
+
+  function wizSubmit() {
+    const nombre = document.getElementById('wfn').value.trim();
+    const tel    = document.getElementById('wft').value.trim();
+    if (!nombre) { document.getElementById('wfn').focus(); return; }
+    if (!tel)    { document.getElementById('wft').focus(); return; }
+    document.getElementById('wiz-body').style.display    = 'none';
+    document.getElementById('wiz-success').style.display = 'block';
+    document.getElementById('wiz-sname').textContent = nombre.split(' ')[0];
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const revealMap = [
+    ['.about-img-wrap', 'left'],
+    ['.about-text',     'right'],
+    ['.res-info',       'left'],
+    ['#rformwrap',      'right'],
+    ['.map-wrap',       'left'],
+    ['.ct-details',     'right'],
+    ['.menu-hd',        'up'],
+    ['.tabs-wrap',      'up'],
+    ['.mdia-card',      'up'],
+    ['.ev-hd',          'up'],
+    ['.gal-hd',         'up'],
+    ['.info-blk',       'up'],
+  ];
+  revealMap.forEach(([sel, dir]) =>
+    document.querySelectorAll(sel).forEach(el => el.dataset.rv = dir)
+  );
+
+  // Stagger: tarjetas de eventos
+  document.querySelectorAll('.ecard').forEach((el, i) => {
+    el.dataset.rv = 'up';
+    el.style.transitionDelay = (i * 0.09) + 's';
+  });
+  // Stagger: galería
+  document.querySelectorAll('.gi').forEach((el, i) => {
+    el.dataset.rv = 'up';
+    el.style.transitionDelay = (i * 0.09) + 's';
+  });
+  // Stagger: stats
+  document.querySelectorAll('.about-stats > div').forEach((el, i) => {
+    el.dataset.rv = 'up';
+    el.style.transitionDelay = (i * 0.13) + 's';
+  });
+
+  const rvObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('rv-in');
+        rvObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-rv]').forEach(el => rvObs.observe(el));
+
+  /* ── CONTADORES ANIMADOS ── */
+  function animateCount(el) {
+    const raw   = el.textContent.trim();
+    const match = raw.match(/^([\d.]+)(.*)$/);
+    if (!match) return;
+    const target = parseFloat(match[1]);
+    const suffix = match[2];
+    const dec    = match[1].includes('.');
+    const dur    = 1800;
+    let start    = null;
+
+    (function step(ts) {
+      if (!start) start = ts;
+      const prog  = Math.min((ts - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - prog, 3);
+      el.textContent = (dec ? (eased * target).toFixed(1) : Math.floor(eased * target)) + suffix;
+      if (prog < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  const cntObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        cntObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.stat-n').forEach(el => cntObs.observe(el));
+</script>
+</body>
+</html>
